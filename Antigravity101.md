@@ -15,59 +15,55 @@ Antigravity is an active, autonomous pair-programming partner. Unlike passive ch
 Below is an overview of how Antigravity processes your requests and interacts with the environment iteratively until the goal is completed:
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#4285F4', 'edgeLabelBackground': '#333333', 'primaryTextColor': '#FFFFFF' }}}%%
 graph TD
-    classDef userReq fill:#EA4335,stroke:#fff,stroke-width:2px,color:#fff,rx:10px,ry:10px;
-    classDef agentPlan fill:#FBBC05,stroke:#fff,stroke-width:2px,color:#333,rx:10px,ry:10px;
-    classDef context fill:#34A853,stroke:#fff,stroke-width:1px,color:#fff;
-    classDef tool fill:#4285F4,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef endRes fill:#9C27B0,stroke:#fff,stroke-width:2px,color:#fff,rx:20px,ry:20px;
-
-    UserReq((User Submits Request)):::userReq --> Plan{Antigravity Formulates Plan}:::agentPlan
+    UserReq((User Request)) --> Plan{Antigravity Plan}
     
-    Plan -->|Needs Context| ContextTools[(Read Files & Search Workspace)]:::context
+    Plan -->|Needs Context| ContextTools[(Read Workspace)]
     ContextTools --> Plan
     
-    Plan -->|Action Required| ExecTools[[Execute Tools]]:::tool
+    Plan -->|Action Required| ExecTools[[Execute Tools]]
     
-    ExecTools --> TermCmds>Terminal Commands]
-    ExecTools --> FileEdits>File System Edits]
-    ExecTools --> Browser>Browser Subagent View]
+    ExecTools --> TermCmds>Terminal]
+    ExecTools --> FileEdits>File Edits]
+    ExecTools --> Browser>Browser View]
     
-    TermCmds --> ObsLogs{{Observe Output and Logs}}
+    TermCmds --> ObsLogs{{Observe Logs}}
     FileEdits --> ObsLogs
     Browser --> ObsLogs
     
     ObsLogs --> GoalCheck{"Goal Achieved?"}
     GoalCheck -->|No| Plan
-    GoalCheck -->|Yes| EndRes([Respond to User]):::endRes
+    GoalCheck -->|Yes| EndRes([Respond to User])
 ```
 
 ---
 
 ## Module 2: Core Capabilities and The Toolbelt
 
-Antigravity isn't just generating text; it has a vast array of robust tools. Here is an overview of its core capabilities represented as a mindmap:
+Antigravity isn't just generating text; it has a vast array of robust tools. Here is an overview of its core capabilities represented as an architecture tree:
 
 ```mermaid
-mindmap
-  root((Antigravity Capabilities))
-    File Manipulation
-      Create New Files
-      Read and Edit Content
-      Regex Search via Ripgrep
-    System Interactions
-      Terminal Commands
-      Package Installation
-      Manage Dev Servers
-    Visual and UI Design
-      Generate Image Mockups
-      Interact with DOM
-      Capture Session Videos
-    Diagnostics
-      Analyze Lint Errors
-      Investigate Crashes
-      Iterative Debugging
+graph LR
+    Root((Capabilities)) --> FM[File Manipulation]
+    Root --> SI[System Interactions]
+    Root --> VD[Visual and UI]
+    Root --> D[Diagnostics]
+    
+    FM --> F1[Create Files]
+    FM --> F2[Read and Edit]
+    FM --> F3[Regex Search]
+    
+    SI --> S1[Terminal Commands]
+    SI --> S2[Package Install]
+    SI --> S3[Dev Servers]
+    
+    VD --> V1[Image Mockups]
+    VD --> V2[DOM Interaction]
+    VD --> V3[Session Video]
+    
+    D --> D1[Analyze Lints]
+    D --> D2[Investigate Crashes]
+    D --> D3[Iterative Debugging]
 ```
 
 ### Breakdown of Key Features:
@@ -88,28 +84,22 @@ Learning to pilot an AI agent effectively means understanding how to craft instr
 
 ### Your Interaction Workflow
 ```mermaid
-%%{init: {'theme': 'neutral'}}%%
 sequenceDiagram
-    autonumber
     actor User
     participant Antigravity
     participant Environment
 
     User->>Antigravity: Create a Next App
-    activate Antigravity
     Antigravity->>Environment: Run create-next-app
-    activate Environment
     Environment-->>Antigravity: Await User Approval
     
-    note right of User: Safety Step
-    User->>Environment: Approves Command manually
+    Note right of User: Safety Step Required
+    User->>Environment: Approves Command
     Environment-->>Antigravity: Output Success
-    deactivate Environment
     
-    Antigravity->>Environment: Modify index files
+    Antigravity->>Environment: Modify files
     Environment-->>Antigravity: Files Saved
     Antigravity->>User: App is ready!
-    deactivate Antigravity
 ```
 
 ---
@@ -119,15 +109,11 @@ sequenceDiagram
 Antigravity represents a blend of advanced systems coming out of Google DeepMind research and applied AI engineering.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'arial', 'primaryColor': '#E8F0FE', 'lineColor': '#1A73E8'}}}%%
 graph LR
-    classDef tech fill:#fff,stroke:#1A73E8,stroke-width:3px;
-    classDef core fill:#1A73E8,stroke:#fff,stroke-width:3px,color:#fff,rx:15px,ry:15px;
-
-    DeepMind["🧠 DeepMind Research"]:::tech --> Anti{"🚀 Antigravity"}:::core
-    Gemini["✨ Gemini Models"]:::tech --> Anti
-    GoogleDesign["🎨 Modern UI Principles"]:::tech --> Anti
-    Anti --> IDE["💻 Your Local IDE"]:::tech
+    DeepMind[(DeepMind Research)] --> Anti{Antigravity}
+    Gemini[(Gemini Models)] --> Anti
+    GoogleDesign[(Modern UI System)] --> Anti
+    Anti --> IDE[(Your Local IDE)]
 ```
 
 * **Powered by Gemini:** Currently utilizing state-of-the-art models which allow for massive context windows, ultra-fast multimodal reasoning, and deep code comprehension.
