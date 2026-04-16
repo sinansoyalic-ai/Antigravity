@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "bierner.markdown-mermaid",
+    "shd101wyy.markdown-preview-enhanced",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "PKief.material-icon-theme",
+    "aaron-bond.better-comments"
+  ]
+}
