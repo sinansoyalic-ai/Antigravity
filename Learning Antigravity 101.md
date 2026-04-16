@@ -79,3 +79,29 @@ Antigravity focuses on doing the **Heavy Lifting**, allowing you to focus on sys
 > *Syntax Verification:* The Mermaid architecture code on this page was dynamically tested and verified in a live instance of the Antigravity Browser (`mermaid.live`) prior to being published here.
 
 ![Syntax Verification Media Artifact](/Users/sinansoyalic/.gemini/antigravity/brain/6a61acc9-c459-4149-aa1b-df004715319c/mermaid_syntax_test_1776330361277.webp)
+
+---
+
+## 6. Your First Flight (Hello World)
+
+To truly operate Antigravity like a technical director, you need to issue directives that give the agent scope and constraints. 
+
+### Structuring Your Prompts
+
+| ❌ The Navigator Prompt (Too Vague) | ✅ The Director Prompt (Highly Specific) |
+| :--- | :--- |
+| *"Fix my login bug."* | *"Investigate the routing error in `login.html`, propose an implementation plan, fix the logic, and spawn a browser instance to test the login flow."* |
+| *"Add a chart here."* | *"Create a Python script using pandas to process `data.csv`, generate an interactive line chart, and execute it locally to produce an `img.png` artifact."* |
+| *"Make it faster."* | *"Research best CI/CD practices for Vite, and update the Yaml file. You may auto-approve safe Git commands to speed up execution."* |
+
+---
+
+## 7. Safety and Terminal Interventions
+
+Because Antigravity autonomously executes real system commands on your operating system, it is designed with a strict physical pause for potentially destructive actions.
+
+> [!WARNING]  
+> **The 'Requires User Approval' Block**
+> When Antigravity proposes a command like `npm install`, modifying database states, or pushing to Git, your terminal pipeline will explicitly pause. You must physically review the terminal output and click **Approve** or **Reject** in your IDE.
+
+If an action goes wrong, or a command hangs, you don't need to fix the terminal yourself! Just type back to Antigravity: *"The command failed with a port block, please terminate the process and map a new port."* The agent will automatically read the error and reroute its execution plan.
